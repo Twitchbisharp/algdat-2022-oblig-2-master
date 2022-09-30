@@ -39,16 +39,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe() {
     }
-
+        //Oppgave 1
     public DobbeltLenketListe(T[] a) {
         this();
 
-
         int i = 0;
 
-        for(; i < a.length && a[i] == null; i++){
-
-        }
+        for(; i < a.length && a[i] == null; i++){}
 
         Objects.requireNonNull(a, "Tabellen a er null!");
 
@@ -64,31 +61,36 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             hale = navn;
         }
-        }
+    }
 
     public Liste<T> subliste(int fra, int til) {
         throw new UnsupportedOperationException();
     }
 
+    //Oppgave 1
     @Override
     public int antall() {
         return antall;
     }
 
+    // Oppgave 1
     @Override
     public boolean tom() {
-        /*if(antall>0){
-            return false;
-        } else{
-            return true;
-        }*/
-        //return antall == 0;
         return antall == 0 ? true : false;
     }
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi, "Tabellen er null!");
+        if(antall == 0){ // DobbeltLenketListe er tom
+            hale = hode = new Node<>(verdi, null, null);
+        }else{
+            hale.neste = new Node<>(verdi, hale, null);
+            hale = hale.neste;
+        }
+        antall++;
+        endringer++;
+        return true;
     }
 
     @Override
@@ -131,13 +133,45 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    //Oppgave 2
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        if(antall == 0) return "[]";
+        Node current = hode;
+
+        StringBuilder s = new StringBuilder();
+        s.append('[').append(current.verdi);
+
+        for(int i = 0; i<antall; i++){
+            if(current.neste == null){
+                break;
+            } else{
+                s.append(',').append(' ').append(current.neste.verdi);
+                current.neste = current;
+            }
+        }
+        s.append(']');
+        return s.toString();
     }
 
+    // Oppgave 2
     public String omvendtString() {
-        throw new UnsupportedOperationException();
+        if(antall == 0) return "[]";
+        Node current = hale;
+
+        StringBuilder s = new StringBuilder();
+        s.append('[').append(current.verdi);
+
+        for(int i = 0; i<=antall; i++){
+            if(current == null){
+                break;
+            } else{
+                s.append(',').append(' ').append(current.verdi);
+                current.forrige = current;
+            }
+        }
+        s.append(']');
+        return s.toString();
     }
 
     @Override
