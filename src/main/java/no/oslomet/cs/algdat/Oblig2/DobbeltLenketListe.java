@@ -43,23 +43,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public DobbeltLenketListe(T[] a) {
         this();
 
-        /*if(a == null){
-            throw new NullPointerException("Tabellen a er null!");
-        }*/
-
 
         int i = 0;
-        int lengde = a.length;
 
-        for(; i < lengde && a[i] == null; i++){
+        for(; i < a.length && a[i] == null; i++){
 
         }
 
         Objects.requireNonNull(a, "Tabellen a er null!");
 
-        if(i<lengde){
+        if(i<a.length){
             Node<T> navn = hode = new Node<>(a[i], null, null);
-            for(; i<lengde; i++){
+            for(; i<a.length; i++){
                 if(a[i] != null){
                     navn.neste = new Node<>(a[i], null, null);
                     navn.neste.forrige = navn;
@@ -69,20 +64,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             hale = navn;
         }
-
-
-
-        /*for(i = 0; i < a.length; i++){
-            if(a[i] == null){
-                //skal ikke opprette node
-                break;
-            } else if(hode == null){
-                //oppretter første node
-                hale = new Node<>(a[i], null, null);
-                hode = hale;
-            } else if(dette er en node i midten){
-                hale = new Node<>(a[i], hode, null);
-            }*/
         }
 
     public Liste<T> subliste(int fra, int til) {
