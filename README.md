@@ -4,6 +4,7 @@ Denne oppgaven er en innlevering i Algoritmer og Datastrukturer.
 Oppgaven er levert av følgende studenter:
 * Navn Navnesen, S123456, s123456@oslomet.no
 * Filip Mattias Nilssen, s364544, s364544@oslomet.no
+* William Promnoi Evensen, s364581, s364581@oslomet.no
 
 # Arbeidsfordeling
 
