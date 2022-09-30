@@ -7,6 +7,7 @@ package no.oslomet.cs.algdat.Oblig2;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -40,7 +41,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public DobbeltLenketListe() {
     }
         //Oppgave 1
-    public DobbeltLenketListe(T[] a) {
+    public DobbeltLenketListe(T[] a) { //Konstruktør
         this();
 
         int i = 0;
@@ -50,16 +51,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Objects.requireNonNull(a, "Tabellen a er null!");
 
         if(i<a.length){
-            Node<T> navn = hode = new Node<>(a[i], null, null);
+            Node<T> current = hode = new Node<>(a[i], null, null); // bare hode
+            antall++;
+            i++;
             for(; i<a.length; i++){
                 if(a[i] != null){
-                    navn.neste = new Node<>(a[i], null, null);
-                    navn.neste.forrige = navn;
-                    navn = navn.neste;
+                    current.neste = new Node<T>(a[i], current, null);
+                    current.neste.forrige = current;
+                    current = current.neste;
                     antall++;
                 }
             }
-            hale = navn;
+            hale = current;
         }
     }
 
@@ -136,7 +139,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 2
     @Override
     public String toString() {
-        if(antall == 0) return "[]";
+        /*if(antall == 0) return "[]";
         Node current = hode;
 
         StringBuilder s = new StringBuilder();
@@ -152,11 +155,61 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         s.append(']');
         return s.toString();
+
+        */
+            // {null, 1, null, 2, null} => [1, 1, 2]
+        /*StringBuilder s = new StringBuilder();
+        s.append('[');
+        Node<T> current;
+        if(hode != null){
+            current = hode;
+            s.append(hode.verdi);
+            while(current.neste != null){
+                s.append(", ");
+                current = current.neste;
+                s.append(current.verdi);
+            }
+        }
+        s.append(']');
+        return s.toString();*/
+
+        StringJoiner s = new StringJoiner(", " , "[", "]");
+        Node<T> current = hode;
+        while(current != null){
+            s.add(current.verdi.toString());
+            current = current.neste;
+        }
+        return s.toString();
     }
 
     // Oppgave 2
     public String omvendtString() {
-        if(antall == 0) return "[]";
+
+        StringJoiner s = new StringJoiner(", " , "[", "]");
+        Node<T> current = hale;
+        while(current != null){
+            s.add(current.verdi.toString());
+            current = current.forrige;
+        }
+        return s.toString();
+
+        /*StringBuilder s = new StringBuilder();
+        s.append('[');
+        Node<T> current;
+        if(hale != null){
+            current = hale;
+            s.append(hale.verdi);
+            while(current.forrige != null){
+                s.append(", ");
+                current = current.forrige;
+                s.append(current.verdi);
+            }
+        }
+        s.append(']');
+        return s.toString();*/
+
+
+        /*if(antall == 0) return "[]";
         Node current = hale;
 
         StringBuilder s = new StringBuilder();
@@ -172,6 +225,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         s.append(']');
         return s.toString();
+         */
     }
 
     @Override
