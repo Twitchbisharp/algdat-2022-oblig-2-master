@@ -139,40 +139,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 2
     @Override
     public String toString() {
-        /*if(antall == 0) return "[]";
-        Node current = hode;
-
-        StringBuilder s = new StringBuilder();
-        s.append('[').append(current.verdi);
-
-        for(int i = 0; i<antall; i++){
-            if(current.neste == null){
-                break;
-            } else{
-                s.append(',').append(' ').append(current.neste.verdi);
-                current.neste = current;
-            }
-        }
-        s.append(']');
-        return s.toString();
-
-        */
-            // {null, 1, null, 2, null} => [1, 1, 2]
-        /*StringBuilder s = new StringBuilder();
-        s.append('[');
-        Node<T> current;
-        if(hode != null){
-            current = hode;
-            s.append(hode.verdi);
-            while(current.neste != null){
-                s.append(", ");
-                current = current.neste;
-                s.append(current.verdi);
-            }
-        }
-        s.append(']');
-        return s.toString();*/
-
         StringJoiner s = new StringJoiner(", " , "[", "]");
         Node<T> current = hode;
         while(current != null){
@@ -192,40 +158,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             current = current.forrige;
         }
         return s.toString();
-
-        /*StringBuilder s = new StringBuilder();
-        s.append('[');
-        Node<T> current;
-        if(hale != null){
-            current = hale;
-            s.append(hale.verdi);
-            while(current.forrige != null){
-                s.append(", ");
-                current = current.forrige;
-                s.append(current.verdi);
-            }
-        }
-        s.append(']');
-        return s.toString();*/
-
-
-        /*if(antall == 0) return "[]";
-        Node current = hale;
-
-        StringBuilder s = new StringBuilder();
-        s.append('[').append(current.verdi);
-
-        for(int i = 0; i<=antall; i++){
-            if(current == null){
-                break;
-            } else{
-                s.append(',').append(' ').append(current.verdi);
-                current.forrige = current;
-            }
-        }
-        s.append(']');
-        return s.toString();
-         */
     }
 
     @Override
