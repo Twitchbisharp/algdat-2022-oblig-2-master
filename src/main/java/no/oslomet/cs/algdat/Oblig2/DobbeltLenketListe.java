@@ -52,7 +52,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if(i<a.length){
             Node<T> current = hode = new Node<>(a[i], null, null); // bare hode
-            antall++;
+            antall++; // dette fiksa alle problemene våre :D
             i++;
             for(; i<a.length; i++){
                 if(a[i] != null){
