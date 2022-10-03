@@ -32,6 +32,7 @@ public interface Liste<T> extends Beholder<T> {
         return "Indeks: " + indeks + ", Antall: " + antall();
     }
 
+    //Oppgave 3
     public default void indeksKontroll(int indeks, boolean leggInn) {
         if (indeks < 0 ? true : (leggInn ? indeks > antall() : indeks >= antall())) {
             throw new IndexOutOfBoundsException(melding(indeks));

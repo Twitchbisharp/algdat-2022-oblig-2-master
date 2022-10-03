@@ -38,8 +38,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
 
-    public DobbeltLenketListe() {
-    }
+    public DobbeltLenketListe() {}
         //Oppgave 1
     public DobbeltLenketListe(T[] a) { //Konstruktør
         this();
@@ -67,7 +66,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til) {
-        throw new UnsupportedOperationException();
+        fratilKontroll(this.antall, fra, til);
+        Liste<T> subliste = new DobbeltLenketListe<T>();
+        Node<T> gihun = finnNode(fra);
+        for(int i = fra; i<til;i++){
+            subliste.leggInn(gihun.verdi);
+            gihun = gihun.neste;
+        }
+        return subliste;
+    }
+
+    private static void fratilKontroll(int antall, int fra, int til){
+        if(fra < 0){
+            throw new IndexOutOfBoundsException("Fra(" + fra + ") er negativ!");
+        }
+        if(til > antall){
+            throw new IndexOutOfBoundsException("Til(" + til + ") > nodelengde(" + antall + ")");
+        }
+        if(fra > til){
+            throw new IllegalArgumentException("fra(" + fra + ") > til(" + til +") - Illegalt intervall!");
+        }
     }
 
     //Oppgave 1
@@ -82,6 +100,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return antall == 0 ? true : false;
     }
 
+    //Oppgave 2b
     @Override
     public boolean leggInn(T verdi) {
         Objects.requireNonNull(verdi, "Tabellen er null!");
@@ -106,9 +125,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    // Oppgave 3
     @Override
     public T hent(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        return finnNode(indeks).verdi;
     }
 
     @Override
@@ -116,9 +137,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    // Oppgave 3
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi);
+        indeksKontroll(indeks, false);
+        Node<T> gihun = finnNode(indeks);
+        T gammel = gihun.verdi;
+        gihun.verdi = nyverdi;
+        endringer++;
+        return gammel; // returnerer det som lå der fra før;
     }
 
     @Override
@@ -136,7 +164,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
-    //Oppgave 2
+    //Oppgave 2a
     @Override
     public String toString() {
         StringJoiner s = new StringJoiner(", " , "[", "]");
@@ -148,7 +176,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return s.toString();
     }
 
-    // Oppgave 2
+    // Oppgave 2a
     public String omvendtString() {
 
         StringJoiner s = new StringJoiner(", " , "[", "]");
@@ -158,6 +186,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             current = current.forrige;
         }
         return s.toString();
+    }
+
+    // Oppgave 3
+    private Node<T> finnNode(int indeks){
+        if(indeks < antall/2){
+            //Starter på head og går til høyre ved hjelp av neste-pekere
+            Node<T> current = hode;
+            for(int i = 0; i < indeks; i++){
+                current = current.neste;
+            }
+            return current;
+        } else{
+            //Starter på hale og går til venstre ved hjelp av forrige-pekere
+            Node<T> current = hale;
+            for(int i = antall-1; i > indeks; i--){
+                current = current.forrige;
+            }
+            return current;
+        }
     }
 
     @Override
