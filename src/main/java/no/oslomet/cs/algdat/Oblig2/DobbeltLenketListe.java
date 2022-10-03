@@ -118,9 +118,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 5
     @Override
     public void leggInn(int indeks, T verdi) {
-        Objects.requireNonNull(indeks);
+        Objects.requireNonNull(verdi);
         indeksKontroll(indeks, true);
-        
+        if(tom()){ //Dersom listen er tom
+            hale = hode = new Node<>(verdi, null, null);
+        }
+        else if(indeks == 0){ // Dersom verdien skal legges først
+            hode = hode.forrige = new Node<>(verdi, null, hode);
+        }
+        else if(indeks == antall){ // verdien legges bakerst
+            hale = hale.neste = new Node<>(verdi, hale, null);
+        }
+        else{ // verdien legges et sted i midten
+            Node<T> gihun = finnNode(indeks); // eksisterende node i List
+            gihun.forrige = gihun.forrige.neste = new Node<>(verdi, gihun.forrige, gihun);
+        }
+        antall++;
+        endringer++;
     }
 
 
