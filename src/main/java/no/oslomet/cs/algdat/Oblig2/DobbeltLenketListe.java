@@ -180,14 +180,154 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return gammel; // returnerer det som lå der fra før;
     }
 
+    //Oppgave 6
     @Override
-    public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+    public boolean fjern(T verdi) { //skal fjerne node med oppgitt verdi
+        Objects.requireNonNull(verdi, "verdien er null");
+        /*if(verdi == null){
+            return false;
+        }
+        Node<T> gihun = hode;
+        while(gihun != null){
+            if(gihun.verdi.equals(verdi)){
+                break;
+            }
+            gihun = gihun.neste;
+        }
+        if(gihun == null){
+            return false;
+        }
+        else if(gihun == hode){
+            hode = hode.neste;
+            hode.forrige = null;
+        }
+        else{
+
+        }*/
+
+        //Objects.requireNonNull(verdi, "Tabellen er null!");
+
+        /*
+        if(inneholder(verdi)){
+            //fjerne denne indeksen
+            int indeks = indeksTil(verdi);
+            Node<T> gihun = finnNode(indeks);
+            gihun.forrige.neste = gihun.neste;
+            gihun.neste.forrige = gihun.forrige;
+            antall--;
+            endringer++;
+            return true;
+        } else{
+            // denne verdien eksisterer ikke i listen
+            return false;
+         }
+         */
+        if(verdi == null){
+            return false;
+        }
+        Node<T> gihun = hode;
+        while(gihun != null){
+            if(gihun.verdi.equals(verdi)){
+                break;
+            }
+            gihun = gihun.neste;
+        }
+        if(antall == 1){
+            hode = null;
+            hale = null;
+        } else if(gihun.forrige == null) {
+            hode.neste.forrige = null;
+            hode = hode.neste;
+        } else if(gihun.neste == null){
+            hale.forrige.neste = null;
+            hale = hale.forrige;
+        } else{
+            gihun.forrige.neste = gihun.neste;
+            gihun.neste.forrige = gihun.forrige;
+        }
+        antall--;
+        endringer++;
+        return true;
     }
 
+    //Oppgave 6
     @Override
-    public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+    public T fjern(int indeks) { // skal returnere verdien som blir fjernet
+        indeksKontroll(indeks, false);
+        T navn;
+        if(indeks == 0){
+            navn = hode.verdi;
+            if(antall == 1){
+                hale = null;
+                hode = hode.neste;
+            } else{
+                hode = hode.neste;
+                hode.forrige.neste = null;
+                hode.forrige = null;
+            }
+        }
+        else{
+            Node<T> gihun = finnNode(indeks-1);
+            Node<T> current = gihun.neste;
+            navn = current.verdi;
+
+                if(current == hale){
+                    hale = gihun;
+                    gihun.neste = current.neste;
+                    current.neste = null;
+                    current.forrige = null;
+                } else{
+                    gihun.neste = current.neste;
+                    gihun.neste.forrige = gihun;
+                    current.neste = null;
+                    current.forrige = null;
+            }
+        }
+        antall--;
+        endringer++;
+        return navn;
+
+
+        /*if(antall == 0 || indeks < 0 || antall <= indeks){
+            throw new IndexOutOfBoundsException();
+        }
+        if(antall == 1){
+            T verdi = hode.verdi;
+            hode = hale;
+            return verdi;
+        }
+        antall--;
+        endringer++;
+        if(indeks == 0){
+            T verdi = hode.verdi;
+            hode.neste.forrige = null;
+            hode = hode.neste;
+        }
+        else if(indeks == antall){ //siste node
+            T verdi = hale.verdi;
+            hale.forrige.neste = null;
+            hale = hale.forrige;
+        }
+        else{
+
+        }*/
+
+
+
+        //Objects.requireNonNull(indeks);
+        /*
+        if(finnNode(indeks) != null){
+            Node<T> gihun = finnNode(indeks);
+            T fjernetVerdi = gihun.verdi;
+            gihun.forrige.neste = gihun.neste;
+            gihun.neste.forrige = gihun.forrige;
+            antall--;
+            endringer++;
+            return fjernetVerdi;
+        }
+        else{
+            return null;
+        }*/
     }
 
     @Override
