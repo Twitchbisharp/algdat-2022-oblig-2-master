@@ -68,7 +68,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(this.antall, fra, til);
         Liste<T> subliste = new DobbeltLenketListe<T>();
-        Node<T> gihun = finnNode(fra);
+        Node<T> gihun = finnNode(fra); //gihun variabelnavn er det samme som squidGame xd
         for(int i = fra; i<til;i++){
             subliste.leggInn(gihun.verdi);
             gihun = gihun.neste;
@@ -115,14 +115,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return true;
     }
 
+    //Oppgave 5
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(indeks);
+        indeksKontroll(indeks, true);
+        
     }
 
+
+    //Oppgave 4
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+        if(indeksTil(verdi) != -1){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     // Oppgave 3
@@ -132,9 +141,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return finnNode(indeks).verdi;
     }
 
+    //Oppgave 4
     @Override
     public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+        Node<T> gihun = hode;
+        for(int i = 0; i < antall; i++){
+            if(gihun.verdi.equals(verdi)){
+                return i;
+            }
+            gihun = gihun.neste;
+        }
+        return -1; // hvis if-testen i for-løkken aldri blir true, så finnes ikke verdien i listen
     }
 
     // Oppgave 3
