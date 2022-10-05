@@ -260,12 +260,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall--;
         endringer++;
         return navn;
-        
+
     }
 
+    // Oppgave 7
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        Node<T> peker = hode;
+
+        while(peker != hale){
+            peker.verdi = null;
+            peker.forrige = null;
+            peker = peker.neste; // itererer fremover
+            peker.forrige.neste = null;
+        }
+        hode = null;
+        hale = null;
+
+        antall = 0;
+        endringer++;
     }
 
     //Oppgave 2a
