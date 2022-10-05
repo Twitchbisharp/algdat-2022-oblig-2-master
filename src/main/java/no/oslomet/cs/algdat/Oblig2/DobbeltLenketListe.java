@@ -183,69 +183,40 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 6
     @Override
     public boolean fjern(T verdi) { //skal fjerne node med oppgitt verdi
-        Objects.requireNonNull(verdi, "verdien er null");
-        /*if(verdi == null){
-            return false;
+        if (verdi == null) return false;          // ingen nullverdier i listen
+
+        Node<T> q = hode, p = null;               // hjelpepekere
+
+        while (q != null)                         // q skal finne verdien
+        {
+            if (q.verdi.equals(verdi)) break;       // verdien funnet
+            p = q;
+            q = q.neste;                     // p er forgjengeren til q
         }
-        Node<T> gihun = hode;
-        while(gihun != null){
-            if(gihun.verdi.equals(verdi)){
-                break;
+
+        if (q == null) return false;                                    // fant ikke verdi
+        else if (q == hode) { // hvis vi skal fjerne første indeks
+            if (antall == 1) { // Hvis tabellen bare er én Node
+                hode = hale = null;
+            } else { // Tabellen har 2 eller flere noder
+                hode.neste.forrige = null;
+                hode = hode.neste;
             }
-            gihun = gihun.neste;
+        } else if (q != hale) { // hvis vi skal fjerne en node som verken er hale eller hode
+            q.forrige.neste = q.neste;
+            q.neste.forrige = q.forrige;
         }
-        if(gihun == null){
-            return false;
-        }
-        else if(gihun == hode){
-            hode = hode.neste;
-            hode.forrige = null;
-        }
-        else{
 
-        }*/
 
-        //Objects.requireNonNull(verdi, "Tabellen er null!");
+        if (q == hale) {
+            hale = p;
+            hale.neste = null;
+        }  // hvis vi skal fjerne hale
 
-        /*
-        if(inneholder(verdi)){
-            //fjerne denne indeksen
-            int indeks = indeksTil(verdi);
-            Node<T> gihun = finnNode(indeks);
-            gihun.forrige.neste = gihun.neste;
-            gihun.neste.forrige = gihun.forrige;
-            antall--;
-            endringer++;
-            return true;
-        } else{
-            // denne verdien eksisterer ikke i listen
-            return false;
-         }
-         */
-        if(verdi == null){
-            return false;
-        }
-        Node<T> gihun = hode;
-        while(gihun != null){
-            if(gihun.verdi.equals(verdi)){
-                break;
-            }
-            gihun = gihun.neste;
-        }
-        if(antall == 1){
-            hode = null;
-            hale = null;
-        } else if(gihun.forrige == null) {
-            hode.neste.forrige = null;
-            hode = hode.neste;
-        } else if(gihun.neste == null){
-            hale.forrige.neste = null;
-            hale = hale.forrige;
-        } else{
-            gihun.forrige.neste = gihun.neste;
-            gihun.neste.forrige = gihun.forrige;
-        }
-        antall--;
+        q.verdi = null;                           // nuller verdien til q
+        q.neste = null;                           // nuller nestepeker
+
+        antall--;                                 // en node mindre i listen
         endringer++;
         return true;
     }
@@ -255,30 +226,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) { // skal returnere verdien som blir fjernet
         indeksKontroll(indeks, false);
         T navn;
-        if(indeks == 0){
+        if(indeks == 0){ // skal fjerne første verdien i listen
             navn = hode.verdi;
+            hode = hode.neste; // Denne er i kompendiet, men var ikke her da jeg så over
             if(antall == 1){
                 hale = null;
-                hode = hode.neste;
-            } else{
-                hode = hode.neste;
-                hode.forrige.neste = null;
-                hode.forrige = null;
+                //hode = hode.neste; // flyttes over if-setningen
+            } else{ // Dersom antall > 1 og første indeks skal fjernes
+                //hode = hode.neste; // denne flyttes over if-setningen fordi den er universal
+                hode.forrige.neste = null; // fjerner peker fra første node sin .neste
+                hode.forrige = null; // fjerner peker fra nåværende hode sin .forrige
             }
         }
         else{
-            Node<T> gihun = finnNode(indeks-1);
-            Node<T> current = gihun.neste;
-            navn = current.verdi;
+            Node<T> gihun = finnNode(indeks-1); // gihun er verdien før den som skal fjernes
+            Node<T> current = gihun.neste; // current er den som skal fjeres
+            navn = current.verdi; // returverdi
 
-                if(current == hale){
-                    hale = gihun;
-                    gihun.neste = current.neste;
+                if(current == hale){ // hvis den som skal fjernes er siste verdi
+                    hale = gihun; // if skal egt slutte her
+                    gihun.neste = current.neste; // praktisk talt blir gihun.neste == null
+
+                    // disse fjerner pekerene på noden som skal bli fjernet
                     current.neste = null;
                     current.forrige = null;
-                } else{
-                    gihun.neste = current.neste;
-                    gihun.neste.forrige = gihun;
+                } else{ // hvis current != hale
+                    gihun.neste = current.neste; // hopper over fjernet verdi med .neste
+                    gihun.neste.forrige = gihun; // hopper over fjernet verdi med .forrige
+
+                    // fjerner pekere fra noden som skal bli fjernet
                     current.neste = null;
                     current.forrige = null;
             }
