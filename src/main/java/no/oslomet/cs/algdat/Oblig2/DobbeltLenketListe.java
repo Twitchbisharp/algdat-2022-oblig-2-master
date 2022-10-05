@@ -264,7 +264,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     // Oppgave 7
-    @Override
+    // Dette er metode 1 og den brukte 16ms som er den raskeste av de to metodene
     public void nullstill() {
         Node<T> peker = hode;
 
@@ -279,6 +279,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         antall = 0;
         endringer++;
+    }
+
+
+    // Oppgave 7 2. metode
+    // Denne metoden brukte 18 ms og var tregere enn metode 1
+    public void nullstill2(){
+        for(int i = 0; i < antall;){
+            fjern(0);
+        }
+        antall = 0;
     }
 
     //Oppgave 2a
