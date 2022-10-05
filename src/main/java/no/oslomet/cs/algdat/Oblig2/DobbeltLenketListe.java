@@ -231,9 +231,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hode = hode.neste; // Denne er i kompendiet, men var ikke her da jeg så over
             if(antall == 1){
                 hale = null;
-                //hode = hode.neste; // flyttes over if-setningen
             } else{ // Dersom antall > 1 og første indeks skal fjernes
-                //hode = hode.neste; // denne flyttes over if-setningen fordi den er universal
                 hode.forrige.neste = null; // fjerner peker fra første node sin .neste
                 hode.forrige = null; // fjerner peker fra nåværende hode sin .forrige
             }
@@ -262,48 +260,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall--;
         endringer++;
         return navn;
-
-
-        /*if(antall == 0 || indeks < 0 || antall <= indeks){
-            throw new IndexOutOfBoundsException();
-        }
-        if(antall == 1){
-            T verdi = hode.verdi;
-            hode = hale;
-            return verdi;
-        }
-        antall--;
-        endringer++;
-        if(indeks == 0){
-            T verdi = hode.verdi;
-            hode.neste.forrige = null;
-            hode = hode.neste;
-        }
-        else if(indeks == antall){ //siste node
-            T verdi = hale.verdi;
-            hale.forrige.neste = null;
-            hale = hale.forrige;
-        }
-        else{
-
-        }*/
-
-
-
-        //Objects.requireNonNull(indeks);
-        /*
-        if(finnNode(indeks) != null){
-            Node<T> gihun = finnNode(indeks);
-            T fjernetVerdi = gihun.verdi;
-            gihun.forrige.neste = gihun.neste;
-            gihun.neste.forrige = gihun.forrige;
-            antall--;
-            endringer++;
-            return fjernetVerdi;
-        }
-        else{
-            return null;
-        }*/
+        
     }
 
     @Override
