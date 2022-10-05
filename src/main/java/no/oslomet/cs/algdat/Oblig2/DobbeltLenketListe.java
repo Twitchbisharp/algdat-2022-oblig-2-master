@@ -430,10 +430,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 10
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         for (int i = 1; i < liste.antall(); i++){
-            T verdi = liste.hent(i); // trenger ikke å være en subtype av Comparable
+            T verdi = liste.hent(i); 
             int j = i-1;
 
-            for(; j >= 0 && c.compare(verdi, liste.hent(j)) < 0; j--){ // c bestemmer hvordan vi skal sammenlikne
+            for(; j >= 0 && c.compare(verdi, liste.hent(j)) < 0; j--){
                 liste.oppdater(j+1, liste.hent(j));
             }
             liste.oppdater(j+1, verdi);
