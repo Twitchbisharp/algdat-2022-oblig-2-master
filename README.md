@@ -20,7 +20,13 @@ I oppgave 1 så gikk vi frem ved å ...
 
 I oppgave 2 så brukte vi en ... til å ...
 
-I oppgave 3 
+I oppgave 3 så vi brukte 1 if settning og 2 for løkker for methoden "FinnNode". 
+If settningen ser om indekser mindre en antall/2 også hvis det er sant blir den første for løkken gjennomført ellers så blir else gjennomført. 
+Den første for løkken går fra hodet til neste node også returner verdien som blir oppgitt av "Current" variabelen.
+Den andre for løkken gjør det samme, men går fra hale til den forrige noden.
+I methoden hent bruker vi 2 methoder som er "indeksKontroll" som kontrollerer indeks og "FinnNode" som finner noden og dens verdi.
+Deretter lagde vi en oppdater methode som erstatter verdien på plass "indeks" med "nyverdi".
+Methoden Subliste returnerer en liste som innholder verdier "fra" og "til". Den bruker også en sjekk som sjekker om indeksene fra til er lovelige.
 
 I oppgave 4 
 
@@ -28,7 +34,11 @@ I oppgave 5
 
 I oppgave 6 
 
-I oppgave 7 
+I oppgave 7 lagde vi 2 methode kall som skulle nullstille. Den første methoden bruker en while løkke som starter ved hode og setter den verdien til "null".
+Etter at hode sin verdi er null så vil den gå til hode sin forrige node og gi den verdi "null". Dette gjør den fremover og gjør alle verdier til "null".
+Når while løkken er ferdig så vil den sette hode og hale til "null" og starte antall fra "0" og øke en endring.
+Den andre methoden bruker en for løkke som bruker en annen methode som heter fjern som fjerner den første verdien.
+Tilslutt kjørte vi begge methodene våres og fant ut at methode 1 brukte 16ms og methode 2 brukte 18ms som gjorde at første methode var raskere.
 
 I oppgave 8 
 
