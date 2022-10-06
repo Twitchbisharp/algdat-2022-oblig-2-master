@@ -20,4 +20,18 @@ I oppgave 1 så gikk vi frem ved å ...
 
 I oppgave 2 så brukte vi en ... til å ...
 
-I oppgave 8 så jobba vi hardt...
+I oppgave 3 
+
+I oppgave 4 
+
+I oppgave 5 
+
+I oppgave 6 
+
+I oppgave 7 
+
+I oppgave 8 
+
+I oppgave 9 
+
+I oppgave 10 
