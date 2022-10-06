@@ -36,7 +36,7 @@ Den første for løkken går fra hodet til neste node også returner verdien som
 Den andre for løkken gjør det samme, men går fra hale til den forrige noden.
 I methoden hent bruker vi 2 methoder som er "indeksKontroll" som kontrollerer indeks og "FinnNode" som finner noden og dens verdi.
 Deretter lagde vi en oppdater methode som erstatter verdien på plass "indeks" med "nyverdi".
-Methoden Subliste returnerer en liste som innholder verdier "fra" og "til". Den bruker også en sjekk som sjekker om indeksene fra til er lovelige..
+Methoden Subliste returnerer en liste som innholder verdier "fra" og "til". Den bruker også en sjekk som sjekker om indeksene fra til er lovelige.
 
 I oppgave 4 så startet vi med å sette opp metoden "int indeksTil(T verdi)". 
 Det var da bare å sette opp en for-løkke som sjekker verdi med equals og ikke "==" pga sammenligningsfeil.
