@@ -10,8 +10,9 @@ Oppgaven er levert av følgende studenter:
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
 Adarsh har hatt hovedansvar for oppgave ...
-William har hatt hovedansvar for oppgave ...1
-Filip har hatt hovedansvar for oppgave ...
+William har hatt hovedansvar for oppgave 1
+Filip har hatt hovedansvar for oppgave 10
+Vi har i fellesskap gjort oppgave 2, 3, 4, 5, 6, 7, 8 og 9.
 
 # Oppgavebeskrivelse
 
