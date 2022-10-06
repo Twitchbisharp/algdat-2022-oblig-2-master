@@ -75,7 +75,10 @@ de inntreffer. Så lager vi en ny variabel som har nåværende verdi og returner
 Etter dette opprettet vi metodene iterator() som returnerer en DobbeltLenketListeiterator med og uten startindeks.
 DobbeltLenketListeIterator oppdaterer instansvariabelen denne til å bli node med ønsket indeks.
 
-I oppgave 9 startert
+I oppgave 9 startet vi med å sette opp to if-setninger for å kunne kaste IllegalStateException og
+ConcurrentModificationException. Den første av "Exception" kunne gjøres ved en forkortet if/else med "!"
+og den andre av "Exception" var en enkel "not equal". Deretter var det bare å sette opp en false statement for fjernOK.
+Etter dette var det bare å følge punktene 1-4 og til slutt en 'antall--', og en 'xXx++' for endringer og iteratorendringer.
 
 I oppgave 10 så gikk Filip frem ved å gjenbruke en av oppgavene han hadde gjort i en ukeoppgave
 Deretter så endret han koden til å passe inn i med allerede eksisterende metoder for Node-strukturen.
