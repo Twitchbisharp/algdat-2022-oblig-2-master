@@ -377,20 +377,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             T verdi = denne.verdi;
             denne = denne.neste;
             return verdi;
-
-
-
-            /*if(iteratorendringer == endringer){
-                if(!hasNext()){
-                    throw new NoSuchElementException();
-                }
-                fjernOK = true;
-                T verdi = denne.verdi;
-                denne = denne.neste;
-                return verdi;
-            } else{
-                throw new ConcurrentModificationException();
-            }*/
         }
 
         //Oppgave 9
