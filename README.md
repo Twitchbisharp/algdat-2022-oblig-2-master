@@ -22,11 +22,23 @@ I oppgave 2 så brukte vi en ... til å ...
 
 I oppgave 3 
 
-I oppgave 4 
+I oppgave 4 så startet vi med å sette opp metoden "int indeksTil(T verdi)". 
+Det var da bare å sette opp en for-løkke som sjekker verdi med equals og ikke "==" pga sammenligningsfeil.
+Deretter trengte vi bare å sette en return statement med "-1" slik at ingen unntak ble kastet ved null.
+Ved den andre metoden "boolean inneholder(T verdi)" trengte vi bare en return true dersom listen hadde noen
+verdier i seg.
 
 I oppgave 5 
 
-I oppgave 6 
+I oppgave 6 så startet vi med å sette opp metodene og en sjekk av indeks. Ved første del av koden blir indeks 0
+fjernet og for å sette pekerne opp korrekt var det enklest med en if/else-setning med if/else inni hver av dem. 
+If/else-setningen går gang på gang gjennom hele oppgaven pga oppgavebeskrivelsen "hvis".
+Ved den andre delen av koden startet vi med en return false statement dersom det er null-verdier.
+Deretter satte vi opp noen hjelpepekere og en while-løkke som skal finne verdien og 
+som stopper å kjøre etter å ha funnet verdien. Deretter var det samme konsept med if/else-setninger,
+men med bruk av 'else if' for å sette opp en else for å slippe å skrive en "(statement)".
+Til slutt var det bare å følge bulletpoints'a for hva som skulle gjøres og da var det lett å forstå
+hvor 'antall--', 'endringer++' skulle komme inn. 
 
 I oppgave 7 
 
