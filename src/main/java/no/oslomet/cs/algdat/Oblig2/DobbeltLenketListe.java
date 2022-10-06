@@ -353,6 +353,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;  // teller endringer
         }
 
+        //Oppgave 8
         private DobbeltLenketListeIterator(int indeks) {
             denne = finnNode(indeks);
             fjernOK = false;  // blir sann når next() kalles
