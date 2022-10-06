@@ -210,8 +210,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale.neste = null;
         }  // hvis vi skal fjerne hale
 
-        q.verdi = null;                           // nuller verdien til q
-        q.neste = null;                           // nuller nestepeker
 
         antall--;                                 // en node mindre i listen
         endringer++;
