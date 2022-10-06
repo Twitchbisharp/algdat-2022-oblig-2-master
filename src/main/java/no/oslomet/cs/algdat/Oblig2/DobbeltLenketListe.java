@@ -65,7 +65,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(this.antall, fra, til);
         Liste<T> subliste = new DobbeltLenketListe<T>();
-        Node<T> gihun = finnNode(fra); //gihun variabelnavn er det samme som squidGame xd
+        Node<T> gihun = finnNode(fra);
         for(int i = fra; i<til;i++){
             subliste.leggInn(gihun.verdi);
             gihun = gihun.neste;
@@ -210,8 +210,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale.neste = null;
         }  // hvis vi skal fjerne hale
 
-        q.verdi = null;                           // nuller verdien til q
-        q.neste = null;                           // nuller nestepeker
 
         antall--;                                 // en node mindre i listen
         endringer++;
@@ -353,6 +351,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;  // teller endringer
         }
 
+        //Oppgave 8
         private DobbeltLenketListeIterator(int indeks) {
             denne = finnNode(indeks);
             fjernOK = false;  // blir sann når next() kalles
@@ -416,7 +415,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 10
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         for (int i = 1; i < liste.antall(); i++){
-            T verdi = liste.hent(i); 
+            T verdi = liste.hent(i);
             int j = i-1;
 
             for(; j >= 0 && c.compare(verdi, liste.hent(j)) < 0; j--){
