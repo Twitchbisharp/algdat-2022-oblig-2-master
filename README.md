@@ -64,7 +64,7 @@ de inntreffer. Så lager vi en ny variabel som har nåværende verdi og returner
 Etter dette opprettet vi metodene iterator() som returnerer en DobbeltLenketListeiterator med og uten startindeks.
 DobbeltLenketListeIterator oppdaterer instansvariabelen denne til å bli node med ønsket indeks.
 
-I oppgave 9 
+I oppgave 9 startert
 
 I oppgave 10 så gikk Filip frem ved å gjenbruke en av oppgavene han hadde gjort i en ukeoppgave
 Deretter så endret han koden til å passe inn i med allerede eksisterende metoder for Node-strukturen.
