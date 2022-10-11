@@ -36,7 +36,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {}
-        //Oppgave 1
+    //Oppgave 1
     public DobbeltLenketListe(T[] a) { //Konstruktør
         this();
 
@@ -48,7 +48,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if(i<a.length){
             Node<T> current = hode = new Node<>(a[i], null, null); // bare hode
-            antall++; // dette fiksa alle problemene våre :D
+            antall++;
             i++;
             for(; i<a.length; i++){
                 if(a[i] != null){
@@ -65,7 +65,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(this.antall, fra, til);
         Liste<T> subliste = new DobbeltLenketListe<T>();
-        Node<T> gihun = finnNode(fra);
+        Node<T> gihun = finnNode(fra); // Variabelnavn "gihun" = Gi-hun from SquidGame is god tier :D
         for(int i = fra; i<til;i++){
             subliste.leggInn(gihun.verdi);
             gihun = gihun.neste;
@@ -181,6 +181,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     //Oppgave 6
+    // følgende metode er inspirert av fasit til Oppgave 3 fra Avsnitt 3.3.3 i Kompendiet laget av Ulf Uttersrud
     @Override
     public boolean fjern(T verdi) { //skal fjerne node med oppgitt verdi
         if (verdi == null) return false;          // ingen nullverdier i listen
@@ -281,9 +282,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
 
-    // Oppgave 7 2. metode
+    // Oppgave 7 - 2. metode
     // Denne metoden brukte 18 ms og var tregere enn metode 1
-    public void nullstill2(){
+    public void nullstill2(){ // kaller den nullstill2 fordi den ikke skal brukes
         for(int i = 0; i < antall;){
             fjern(0);
         }
