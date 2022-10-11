@@ -98,6 +98,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     //Oppgave 2b
+    //Følgende metode er inspirert av Programkode 3.2.3 b) i Kompendiet av Ulf Uttersrud
     @Override
     public boolean leggInn(T verdi) {
         Objects.requireNonNull(verdi, "Tabellen er null!");
@@ -113,6 +114,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     //Oppgave 5
+    //Følgende kodebit er inspirert av Programkode 3.2.3 b) i Kompendiet av Ulf Uttersrud
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi);
@@ -153,6 +155,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     //Oppgave 4
+    //Følgende metode er inspirert av Programkode 3.2.2 g) i Kompendiet av Ulf Uttersrud
     @Override
     public int indeksTil(T verdi) {
         Node<T> gihun = hode;
@@ -217,13 +220,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     //Oppgave 6
+    // Deler av denne oppgaven har kode inspirert av Kompendiet til Ulf Uttersrud Programkode 3.3.3 c)
     @Override
     public T fjern(int indeks) { // skal returnere verdien som blir fjernet
         indeksKontroll(indeks, false);
         T navn;
         if(indeks == 0){ // skal fjerne første verdien i listen
             navn = hode.verdi;
-            hode = hode.neste; // Denne er i kompendiet, men var ikke her da jeg så over
+            hode = hode.neste;
             if(antall == 1){
                 hale = null;
             } else{ // Dersom antall > 1 og første indeks skal fjernes
@@ -237,7 +241,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             navn = current.verdi; // returverdi
 
                 if(current == hale){ // hvis den som skal fjernes er siste verdi
-                    hale = gihun; // if skal egt slutte her
+                    hale = gihun;
                     gihun.neste = current.neste; // praktisk talt blir gihun.neste == null
 
                     // disse fjerner pekerene på noden som skal bli fjernet
@@ -413,6 +417,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     //Oppgave 10
+    //følgende kode er inspirert fra kompendiet Programkode 1.3.8 c) av Ulf Uttersrud
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
         for (int i = 1; i < liste.antall(); i++){
             T verdi = liste.hent(i);
